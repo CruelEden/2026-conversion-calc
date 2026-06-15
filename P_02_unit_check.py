@@ -1,6 +1,4 @@
 # Store values
-
-
 distance_dict = {
     "mm": 1000,
     "cm": 100,
@@ -36,17 +34,97 @@ volume_dict = {
 }
 
 
-# main
-amount = float(input("How much? "))
-from_units = input("From unit? ")
-to_unit = input("To unit? ")
 
-# Multiply to get the standard value...
-multiply_by = distance_dict[to_unit]
-standard = amount * multiply_by
+def unit_type():
 
-# Divide to get our desired value
-divide_by = distance_dict[from_units]
-answer = standard / divide_by
+   while True:
 
-print(f"There are {answer} {to_unit} in {amount} {from_units} ")
+        response = input("unit type: ").lower()
+
+        # check i or exit code
+        if response == "xxx":
+            return response
+
+        elif response in ['distance']:
+            return "distance"
+
+        elif response in ['mass']:
+            return "mass"
+
+        elif response in ['time']:
+            return "time"
+
+        elif response in ['volume']:
+            return "volume"
+
+        else:
+            print("Please enter a valid file type")
+
+def num_check(question):
+    error = "Please enter a number that is more than zero (or 'xxx' to exit)\n"
+    while True:
+        response = input(question).lower()  # Get input as text first
+
+        # 1. Check for the exit code first
+        if response == "xxx":
+            return response
+
+        # 2. If not exiting, try converting to a number
+        try:
+            response = float(response)
+
+            # Check that the number is more than zero
+            if response > 0:
+                return response
+            else:
+                print(error)
+
+        except ValueError:
+            print(error)
+
+
+while True:
+    amount = num_check("How much? ") or float(input("How much? "))
+    if amount == "xxx":
+        print("Exiting program. Goodbye!")
+        break
+    from_units = input("From unit? ")
+    to_unit = input("To unit? ")
+
+while True:
+    unit = unit_type()
+
+    if unit == "xxx":
+        break
+
+    if unit == "distance":
+        multiply_by = distance_dict[to_unit]
+        standard = amount * multiply_by
+
+        # Divide to get our desired value
+        divide_by = distance_dict[from_units]
+        answer = standard / divide_by
+
+    elif unit == "mass":
+        multiply_by = mass_dict[to_unit]
+        standard = amount * multiply_by
+
+        # Divide to get our desired value
+        divide_by = mass_dict[from_units]
+        answer = standard / divide_by
+
+    elif unit == "time":
+        multiply_by = time_dict[to_unit]
+        standard = amount * multiply_by
+
+        # Divide to get our desired value
+        divide_by = time_dict[from_units]
+        answer = standard / divide_by
+
+    elif unit == "volume":
+        multiply_by = volume_dict[to_unit]
+        standard = amount * multiply_by
+
+        # Divide to get our desired value
+        divide_by = volume_dict[from_units]
+        answer = standard / divide_by
