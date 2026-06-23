@@ -39,65 +39,65 @@ def unit_type():
 
    while True:
 
-        response = input("unit type: ")
+        response = input("Unit type: ")
 
         # check exit code
         if response == "xxx":
             return response
 
-        if response in 'distance':
+        elif response in ['distance','d']:
             return "distance"
 
-        if response in 'mass':
+        elif response in ['mass', 'm']:
             return "mass"
 
-        if response in 'time':
+        elif response in ['time', 't']:
             return "time"
 
-        if response in 'volume':
+        elif response in ['volume', 'v']:
             return "volume"
 
         else:
             print("Please enter a valid unit")
 
-
-def num_check(question):
-    error = "Please enter a number that is more than zero (or 'xxx' to exit)\n"
-    while True:
-        response = input(question).lower()  # Get input as text first
-
-        # 1. Check for the exit code first
-        if response == "xxx":
-            return response
-
-        # 2. If not exiting, try converting to a number
-        try:
-            response = float(response)
-
-            # Check that the number is more than zero
-            if response > 0:
-                return response
-            else:
-                print(error)
-
-        except ValueError:
-            print(error)
-
 def distance():
 
     while True:
 
-        amount = num_check("How much? ") or float(input("How much? "))
-        if amount == "xxx":
-            print("Exiting program. Goodbye!")
-            break
-        from_units = input("From unit? ")
-        to_unit = input("To unit? ")
+        print(f"you picked {unit}")
+        break
 
-        # Multiply to get the standard value...
-        multiply_by = distance_dict[to_unit]
-        standard = amount * multiply_by
+def mass():
 
-        # Divide to get our desired value
-        divide_by = distance_dict[from_units]
-        answer = standard / divide_by
+    while True:
+
+        print(f"you picked {unit}")
+        break
+
+def time():
+
+    while True:
+
+        print(f"you picked {unit}")
+        break
+
+def volume():
+
+    while True:
+
+        print(f"you picked {unit}")
+        break
+
+while True:
+    unit = unit_type()
+
+    if unit == "xxx":
+        break
+    elif unit == "distance":
+        dis_con = distance()
+    elif unit == "mass":
+        mas_con = mass()
+    elif unit == "time":
+        tim_con = time()
+    elif unit == "volume":
+        vol_con = volume()
