@@ -184,11 +184,11 @@ while True:
     unit = unit_type()
     if unit == "xxx":
         break
-    elif unit == "distance":
+    if unit == "distance":
         dis_con = distance()
-    elif unit == "mass":
+    if unit == "mass":
         mas_con = mass()
-    elif unit == "time":
+    if unit == "time":
         tim_con = time()
-    elif unit == "volume":
+    if unit == "volume":
         vol_con = volume()
