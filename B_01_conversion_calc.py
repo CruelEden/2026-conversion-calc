@@ -15,12 +15,11 @@ mass_dict = {
 
 time_dict = {
     "ms": 3600 * 1000,
-    "s": 3600,
+    "sec": 3600,
     "min": 60,
-    "h": 1,
-    "d": 1 / 24,
-    "month": 1 / 168,
-    "y": 1 / (24 * 365 + 6 + 9 / 60)  # it accounts for leap year
+    "hour": 1,
+    "day": 1 / 24,
+    "year": 1 / (24 * 365 + 6 + 9 / 60)  # it accounts for leap year
 }
 
 volume_dict = {
@@ -33,7 +32,6 @@ volume_dict = {
 # Displays instructions
 def statement_generator(statement, decoration):
     print(f"\n{decoration * 5} {statement} {decoration * 5}")
-
 def instructions():
     statement_generator("instructions", "-")
     print('''
@@ -47,6 +45,7 @@ want_instructions = input("Press <enter> to read the instructions "
 if want_instructions == "":
     instructions()
 
+# Check everything
 
 def num_check(question):
     error = "Please enter a number that is more than zero (or 'xxx' to exit)\n"
@@ -146,7 +145,7 @@ def time():
         from_units = input("From unit? ")
         to_unit = input("To unit? ")
 
-        # Multiply to get the standard value...
+        # Multiply to get the standard value
         multiply_by = time_dict[to_unit]
         standard = amount * multiply_by
 
@@ -180,15 +179,17 @@ def volume():
 
 
 # Main Routine Goes Here
+
 while True:
     unit = unit_type()
     if unit == "xxx":
+        print("Exiting code")
         break
-    if unit == "distance":
+    elif unit == "distance":
         dis_con = distance()
-    if unit == "mass":
+    elif unit == "mass":
         mas_con = mass()
-    if unit == "time":
+    elif unit == "time":
         tim_con = time()
-    if unit == "volume":
+    elif unit == "volume":
         vol_con = volume()
