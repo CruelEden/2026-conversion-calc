@@ -35,10 +35,10 @@ def statement_generator(statement, decoration):
 def instructions():
     statement_generator("instructions", "-")
     print('''
-instructions go here.
-- instruction 1
-- instruction 2
-- etc   
+- put in the unit you want
+- put in amount you want to convert
+- put in what you want to convert it from
+- put in what you want to convert it to
     ''')
 want_instructions = input("Press <enter> to read the instructions "
                           "or any key to continue ")
